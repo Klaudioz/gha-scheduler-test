@@ -13,4 +13,4 @@ jobs:
       uses: actions/checkout@v2
       with: { ref: main }
     - name: List files
-      run: ls
+      run: date
