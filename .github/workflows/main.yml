@@ -3,6 +3,9 @@ on:
   schedule:
   - cron: "*/5 * * * *"
 
+env:
+  TEST: ${{ secrets.TEST }}
+
 jobs:
   job1:
     name: Debug
@@ -12,7 +15,7 @@ jobs:
     - name: Git checkout
       uses: actions/checkout@v2
       with: { ref: main }
-    - name: List files
-      env:
-        TEST: ${{ secrets.TEST }}
-      run: echo $TEST
+    - name: Run python script
+      shell: python
+      run: |
+        print(${{ env.TEST }})
